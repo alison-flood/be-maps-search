@@ -63,66 +63,66 @@ export type POI = {
 };
 
 export type Mapcode = {
-  type: "Local" | "International" | "Alternative";
+  type: 'Local' | 'International' | 'Alternative';
   fullMapcode: string;
   territory: string;
   code: string;
 };
 
 export enum FuelType {
-  petrol = "Petrol",
-  lpg = "LPG",
-  diesel = "Diesel",
-  biodiesel = "Biodiesel",
-  commdiesel = "DieselForCommercialVehicles",
-  e85 = "E85",
-  lng = "LNG",
-  cng = "CNG",
-  hydrogen = "Hydrogen",
-  adblue = "AdBlue",
+  petrol = 'Petrol',
+  lpg = 'LPG',
+  diesel = 'Diesel',
+  biodiesel = 'Biodiesel',
+  commdiesel = 'DieselForCommercialVehicles',
+  e85 = 'E85',
+  lng = 'LNG',
+  cng = 'CNG',
+  hydrogen = 'Hydrogen',
+  adblue = 'AdBlue',
 }
 
 export enum EntityType {
-  country = "Country",
-  countrySubdivision = "CountrySubdivision",
-  countrySecondarySubdivision = "CountrySecondarySubdivision",
-  countryTertiarySubdivision = "CountryTertiarySubdivision",
-  municipality = "Municipality",
-  municipalitySubdivision = "MunicipalitySubdivision",
-  municipalitySecondarySubdivision = "MunicipalitySecondarySubdivision",
-  neighbourhood = "Neighbourhood",
-  postalCodeArea = "PostalCodeArea",
+  country = 'Country',
+  countrySubdivision = 'CountrySubdivision',
+  countrySecondarySubdivision = 'CountrySecondarySubdivision',
+  countryTertiarySubdivision = 'CountryTertiarySubdivision',
+  municipality = 'Municipality',
+  municipalitySubdivision = 'MunicipalitySubdivision',
+  municipalitySecondarySubdivision = 'MunicipalitySecondarySubdivision',
+  neighbourhood = 'Neighbourhood',
+  postalCodeArea = 'PostalCodeArea',
 }
 
 export enum ResultType {
-  poi = "POI",
-  street = "Street",
-  georgraphy = "Geography",
-  pointAddress = "Point Address",
-  addressRange = "Address Range",
-  crossStreet = "Cross Street",
+  poi = 'POI',
+  street = 'Street',
+  georgraphy = 'Geography',
+  pointAddress = 'Point Address',
+  addressRange = 'Address Range',
+  crossStreet = 'Cross Street',
 }
 
 export enum RelationType {
-  child = "child",
-  parent = "parent",
+  child = 'child',
+  parent = 'parent',
 }
 
 export enum EntryPointType {
-  main = "main",
-  minor = "minor",
+  main = 'main',
+  minor = 'minor',
 }
 
 export enum QueryIntentType {
-  coordinate = "COORDINATE",
-  nearby = "NEARBY",
-  w3w = "W3W",
-  bookmark = "BOOKMARK",
+  coordinate = 'COORDINATE',
+  nearby = 'NEARBY',
+  w3w = 'W3W',
+  bookmark = 'BOOKMARK',
 }
 
 export enum QueryType {
-  nearby = "NEARBY",
-  nonNear = "NON_NEAR",
+  nearby = 'NEARBY',
+  nonNear = 'NON_NEAR',
 }
 
 export type FuzzySearchResult = {

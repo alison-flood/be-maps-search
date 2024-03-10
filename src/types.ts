@@ -1,4 +1,4 @@
-import { Address } from "./tomtom/types";
+import { Address } from './tomtom/types';
 
 export type AutoCompletePlace = Omit<Address, 'id'> & { placeId: string };
 

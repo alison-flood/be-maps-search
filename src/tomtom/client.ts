@@ -1,8 +1,8 @@
-import axios from "axios";
-import { Logger } from "winston";
-import { AutoCompleteOptions } from "..";
-import { AutoCompletePlace } from "../types";
-import { FuzzySearchResponse, isSuccessResponse } from "./types";
+import axios from 'axios';
+import { Logger } from 'winston';
+import { AutoCompleteOptions } from '..';
+import { AutoCompletePlace } from '../types';
+import { FuzzySearchResponse, isSuccessResponse } from './types';
 
 export class TomTomClient {
   apiKey: string;
@@ -14,7 +14,7 @@ export class TomTomClient {
     apiKey,
     apiVersion,
     apiBaseUrl,
-    logger
+    logger,
   }: {
     apiKey: string;
     apiVersion: string;
@@ -35,8 +35,14 @@ export class TomTomClient {
     address: string;
     options?: AutoCompleteOptions;
   }): Promise<FuzzySearchResponse> {
-    if (options?.hasOwnProperty('limit') && (options?.limit === undefined || options?.limit < 1)) {
-      throw new InvalidArgumentError({ message: `Invalid argument for 'limit': ${options?.limit}.  Must be an integer >= 1`, field: 'limit' })
+    if (
+      options?.hasOwnProperty('limit') &&
+      (options?.limit === undefined || options?.limit < 1)
+    ) {
+      throw new InvalidArgumentError({
+        message: `Invalid argument for 'limit': ${options?.limit}.  Must be an integer >= 1`,
+        field: 'limit',
+      });
     }
     const { data: autocomplete } = await axios.get(
       `${this.apiBaseUrl}/${this.apiVersion}/search/${address}.json`,
@@ -56,17 +62,15 @@ export class TomTomClient {
       );
     }
 
-    let results = autocomplete.results
+    let results = autocomplete.results;
     if (options?.locationTypes) {
-        results = autocomplete.results.filter(result => {
-            return options.locationTypes?.includes(result.type)
-        })
+      results = autocomplete.results.filter((result) => {
+        return options.locationTypes?.includes(result.type);
+      });
     }
-    return (
-        {
-            ...autocomplete,
-            results
-        }
-    )
+    return {
+      ...autocomplete,
+      results,
+    };
   }
 }
