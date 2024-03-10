@@ -97,7 +97,7 @@ export enum EntityType {
 export enum ResultType {
   poi = 'POI',
   street = 'Street',
-  georgraphy = 'Geography',
+  geography = 'Geography',
   pointAddress = 'Point Address',
   addressRange = 'Address Range',
   crossStreet = 'Cross Street',

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Logger } from 'winston';
 import { AutoCompleteOptions } from '..';
-import { AutoCompletePlace } from '../types';
+import { InvalidArgumentError } from '../errors';
 import { FuzzySearchResponse, isSuccessResponse } from './types';
 
 export class TomTomClient {
@@ -47,6 +47,8 @@ export class TomTomClient {
     const { data: autocomplete } = await axios.get(
       `${this.apiBaseUrl}/${this.apiVersion}/search/${address}.json`,
       {
+        signal: AbortSignal.timeout(5000),
+        timeout: 5000,
         params: {
           key: this.apiKey,
           limit: options ? options.limit : 100,

@@ -1,4 +1,4 @@
-class MissingConfigError extends Error {
+export class MissingConfigError extends Error {
   constructor({ message }: { message: string }) {
     super(message);
     this.name = 'MissingConfigError';

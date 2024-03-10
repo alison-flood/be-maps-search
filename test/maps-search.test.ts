@@ -3,7 +3,7 @@ import { describe } from '@jest/globals';
 import { TomTomClient } from '../src/tomtom/client';
 import { getAutoCompleteDetails } from '../src';
 import winston from 'winston';
-import { ResultType } from '../src/tomtom/types';
+import { isSuccessResponse, ResultType, SuccessResponse } from '../src/tomtom/types';
 
 config();
 
@@ -200,7 +200,7 @@ describe('Tomtom Places E2E Tests', () => {
       },
     );
 
-    it.skip.each([
+    it.each([
       { address: 'Charlotte Street' },
       { address: '100 Skyring' },
       { address: 'Australia' },
@@ -221,14 +221,10 @@ describe('Tomtom Places E2E Tests', () => {
             locationTypes: [ResultType.pointAddress],
           },
         });
-        // console.log(res);
-        const firstRes = res.foundAddresses[0];
-        expect(firstRes).toHaveProperty('placeId');
-        expect(firstRes).toHaveProperty('streetNumber');
-        expect(firstRes).toHaveProperty('countryCode');
-        expect(firstRes).toHaveProperty('country');
-        expect(firstRes).toHaveProperty('freeformAddress');
-        expect(firstRes).toHaveProperty('municipality');
+        
+      for (const result of res.foundAddresses) {
+        expect(result.type).toEqual(ResultType.pointAddress);
+      }
       },
     );
 
@@ -244,17 +240,17 @@ describe('Tomtom Places E2E Tests', () => {
   });
 
   describe('getPlaceAutoComplete', () => {
-    let tomtom;
+    let tomtom: TomTomClient;
 
     beforeAll(() => {
       tomtom = new TomTomClient({ apiKey, apiVersion, apiBaseUrl, logger });
     });
 
-    it.skip('handles no results', async () => {
+    it('handles no results', async () => {
       const res = await tomtom.fuzzySearch({
         address: 'asfasffasfasafsafs',
       });
-      expect(res).toStrictEqual([]);
+      expect((res as SuccessResponse).results).toStrictEqual([]);
     });
 
     it('handles error', async () => {

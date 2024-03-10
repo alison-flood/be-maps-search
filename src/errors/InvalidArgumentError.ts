@@ -1,4 +1,4 @@
-class InvalidArgumentError extends Error {
+export class InvalidArgumentError extends Error {
   field: string;
   constructor({ message, field }: { message: string; field: string }) {
     super(message);
