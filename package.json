@@ -1,0 +1,51 @@
+{
+  "name": "@montu/maps-backend-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "prettier": "prettier --write .",
+    "test": "jest",
+    "init": "cp .env.example .env && yarn install && yarn build"
+  },
+  "author": "Alison Flood",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.13.10",
+    "@babel/preset-typescript": "^7.13.0",
+    "@types/jest": "^29.5.3",
+    "@types/node": "^20.4.8",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-config-standard-typescript-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "jest": "^27.0.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "winston": "^3.12.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "eslintConfig": {
+    "extends": [
+      "standard-typescript-prettier"
+    ],
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    }
+  },
+  "prettier": "eslint-config-standard-typescript-prettier/prettier"
+}
