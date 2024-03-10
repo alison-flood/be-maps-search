@@ -32,9 +32,9 @@ export async function getAutoCompleteDetails({
   const apiBaseUrl = process.env.TOMTOM_API_BASE_URL;
   const apiVersion = process.env.TOMTOM_API_VERSION;
   if (!apiKey || !apiBaseUrl || !apiVersion) {
-    throw new MissingConfigError(
-      'Missing TomTom API configuration.  Have you set up your .env file?',
-    );
+    throw new MissingConfigError({ 
+        message: 'Missing TomTom API configuration.  Have you set up your .env file?' 
+    });
   }
 
   if (address.length < 1) {
