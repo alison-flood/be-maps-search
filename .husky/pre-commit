@@ -1,0 +1,4 @@
+yarn prettier --write
+yarn eslint --fix
+yarn test
+exit 1
