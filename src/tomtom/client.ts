@@ -1,4 +1,5 @@
 import axios from 'axios';
+import axiosRetry from 'axios-retry';
 import { Logger } from 'winston';
 import { AutoCompleteOptions } from '..';
 import { InvalidArgumentError } from '../errors';
@@ -44,6 +45,8 @@ export class TomTomClient {
         field: 'limit',
       });
     }
+
+    axiosRetry(axios, { retries: 3, retryDelay: axiosRetry.exponentialDelay, onRetry: (retryCount: number, error, requestConfig) => { console.log(`Retry count ${retryCount} for request ${requestConfig.url}`) } });
     const { data: autocomplete } = await axios.get(
       `${this.apiBaseUrl}/${this.apiVersion}/search/${address}.json`,
       {
