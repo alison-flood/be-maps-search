@@ -4,7 +4,6 @@ import { TomTomClient } from '../src/tomtom/client';
 import { getAutoCompleteDetails } from '../src';
 import winston from 'winston';
 import {
-  isSuccessResponse,
   ResultType,
   SuccessResponse,
 } from '../src/tomtom/types';
@@ -232,7 +231,7 @@ describe('Tomtom Places E2E Tests', () => {
       },
     );
 
-    it('returns only AU addresses', async () => {
+    it('returns addresses for the specified country', async () => {
       const res = await getAutoCompleteDetails({
         address: 'Charlotte Street',
         options: { countryCode: 'AU' },

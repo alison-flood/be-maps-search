@@ -47,8 +47,11 @@ export class TomTomClient {
     }
 
     axiosRetry(axios, {
-      retries: 3,
+      retries: 5,
       retryDelay: axiosRetry.exponentialDelay,
+      retryCondition: (error) => {
+        return error.response.status === 429 || error.response.status >= 500;
+      },
       onRetry: (retryCount: number, error, requestConfig) => {
         console.log(
           `Retry count ${retryCount} for request ${requestConfig.url}`,
