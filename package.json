@@ -8,7 +8,8 @@
     "prettier": "prettier --write .",
     "lint": "eslint --fix",
     "test": "jest",
-    "init": "cp .env.example .env && yarn install && yarn build"
+    "init": "cp .env.example .env && yarn install && yarn build",
+    "prepare": "husky"
   },
   "author": "Alison Flood",
   "license": "ISC",
