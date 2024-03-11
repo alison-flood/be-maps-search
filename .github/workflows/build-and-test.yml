@@ -22,5 +22,5 @@ jobs:
     - run: yarn test
       env:
         TOMTOM_API_KEY: ${{ secrets.TOMTOM_API_KEY }}
-        TOMTOM_API_BASE_URL: ${{ secrets.TOMTOM_API_BASE_URL }}
-        TOMTOM_API_VERSION: ${{ secrets.TOMTOM_API_VERSION }}
+        TOMTOM_API_BASE_URL: ${{ variables.TOMTOM_API_BASE_URL }}
+        TOMTOM_API_VERSION: ${{ variables.TOMTOM_API_VERSION }}
