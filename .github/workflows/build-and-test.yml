@@ -18,7 +18,7 @@ jobs:
         node-version: '18.x'
         cache: 'npm'
     - run: yarn
-    - run: yarn run build --if-present
+    - run: yarn run build
     - run: yarn test
       env:
         TOMTOM_API_KEY: ${{ secrets.TOMTOM_API_KEY }}
