@@ -60,7 +60,7 @@
     "*.{js,ts}": [
       "prettier --write",
       "eslint --fix",
-      "git add"
+      "yarn test"
     ]
   },
   "prettier": "eslint-config-standard-typescript-prettier/prettier"
