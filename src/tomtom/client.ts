@@ -1,5 +1,5 @@
 import axios from 'axios';
-import axiosRetry from 'axios-retry';
+import axiosRetry, { isNetworkOrIdempotentRequestError } from 'axios-retry';
 import { Logger } from 'winston';
 import { AutoCompleteOptions } from '..';
 import { InvalidArgumentError } from '../errors';
@@ -49,9 +49,7 @@ export class TomTomClient {
     axiosRetry(axios, {
       retries: 5,
       retryDelay: axiosRetry.exponentialDelay,
-      retryCondition: (error) => {
-        return error.response.status === 429 || error.response.status >= 500;
-      },
+      retryCondition: error => { return isNetworkOrIdempotentRequestError(error) || error.response?.status === 429 },
       onRetry: (retryCount: number, error, requestConfig) => {
         console.log(
           `Retry count ${retryCount} for request ${requestConfig.url}`,
