@@ -46,7 +46,15 @@ export class TomTomClient {
       });
     }
 
-    axiosRetry(axios, { retries: 3, retryDelay: axiosRetry.exponentialDelay, onRetry: (retryCount: number, error, requestConfig) => { console.log(`Retry count ${retryCount} for request ${requestConfig.url}`) } });
+    axiosRetry(axios, {
+      retries: 3,
+      retryDelay: axiosRetry.exponentialDelay,
+      onRetry: (retryCount: number, error, requestConfig) => {
+        console.log(
+          `Retry count ${retryCount} for request ${requestConfig.url}`,
+        );
+      },
+    });
     const { data: autocomplete } = await axios.get(
       `${this.apiBaseUrl}/${this.apiVersion}/search/${address}.json`,
       {

@@ -51,17 +51,5 @@
       "project": "./tsconfig.json"
     }
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts}": [
-      "prettier --write",
-      "eslint --fix",
-      "yarn test"
-    ]
-  },
   "prettier": "eslint-config-standard-typescript-prettier/prettier"
 }

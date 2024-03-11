@@ -3,7 +3,11 @@ import { describe } from '@jest/globals';
 import { TomTomClient } from '../src/tomtom/client';
 import { getAutoCompleteDetails } from '../src';
 import winston from 'winston';
-import { isSuccessResponse, ResultType, SuccessResponse } from '../src/tomtom/types';
+import {
+  isSuccessResponse,
+  ResultType,
+  SuccessResponse,
+} from '../src/tomtom/types';
 
 config();
 
@@ -221,10 +225,10 @@ describe('Tomtom Places E2E Tests', () => {
             locationTypes: [ResultType.pointAddress],
           },
         });
-        
-      for (const result of res.foundAddresses) {
-        expect(result.type).toEqual(ResultType.pointAddress);
-      }
+
+        for (const result of res.foundAddresses) {
+          expect(result.type).toEqual(ResultType.pointAddress);
+        }
       },
     );
 
